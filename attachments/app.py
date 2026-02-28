@@ -22,12 +22,18 @@ st.set_page_config(
 @st.cache_resource
 def init_system():
     db_mgr = DatabaseManager("school_portal.db")
-    # Using your provided Groq Keys
+    
+    # These must be indented 4 spaces
     GROQ_KEYS = [
-        "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",
-        "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",
-        ""
+        os.getenv("GROQ_KEY_1"),
+        os.getenv("GROQ_KEY_2")
     ]
+    
+    # This 'with' must align PERFECTLY with 'db_mgr' above
+    with db_mgr._get_connection() as conn:
+        cols = [c[1] for c in conn.execute("PRAGMA table_info(activities)").fetchall()]
+        # ... the rest of the code inside 'with' must be indented 4 MORE spaces
+
     import streamlit as st
 import pandas as pd
 import os
@@ -605,4 +611,5 @@ else:
         mime='application/zip',
         use_container_width=True
     )
+
     
