@@ -540,5 +540,3 @@ else:
                 res = ai_core.get_career_roadmap(g_data, a_data, f"Chat Context: {st.session_state.roadmap_chat}. User Question: {q}")
                 st.session_state.roadmap_chat.append({"role": "assistant", "content": res})
                 st.rerun()
-app.py
-Displaying app.py.
