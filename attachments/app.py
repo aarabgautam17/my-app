@@ -607,7 +607,7 @@ db, ai_core, pf_manager = init_system()
 
     
     # DB Maintenance: Ensure all new columns exist
-   with db_mgr._get_connection() as conn:
+    with db_mgr._get_connection() as conn:
         cols = [c[1] for c in conn.execute("PRAGMA table_info(activities)").fetchall()]
         if 'file_path' not in cols:
             conn.execute("ALTER TABLE activities ADD COLUMN file_path TEXT")
@@ -1133,6 +1133,7 @@ else:
     )
 
     
+
 
 
 
